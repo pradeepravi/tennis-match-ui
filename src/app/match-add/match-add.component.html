@@ -1,0 +1,50 @@
+<p>Match Added</p>
+<div class="card">
+    <div class="card-body">
+      <form [formGroup]="angForm" novalidate>
+        <div *ngIf="errors" class="alert alert-danger">
+            {{ errors.error.message }}
+        </div>
+          
+        <div class="form-group">
+          <label class="col-md-4">Player 1</label>
+          <input type="text" class="form-control" formControlName="player1" #player1 />
+        </div>
+        <div *ngIf="angForm.controls['player1'].invalid && (angForm.controls['player1'].dirty || angForm.controls['player1'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['player1'].errors.required">
+            Player 1 is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Player 2 </label>
+          <input type="text" class="form-control" formControlName="player2" #player2 />
+        </div>
+        <div *ngIf="angForm.controls['player2'].invalid && (angForm.controls['player2'].dirty || angForm.controls['player2'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['player2'].errors.required">
+            Player 2 is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <button (click)="addMatch(player1.value, player2.value)"
+              [disabled]="angForm.pristine || angForm.invalid" 
+              class="btn btn-primary">
+              Add Game
+           </button>
+        </div>
+        <div *ngIf="match" class="form-group">
+            <button (click)="addScore(match.player1)" class="btn btn-primary"> {{ match.player1 }} </button> 
+             - 
+            <button (click)="addScore(match.player2)" class="btn btn-primary"> {{ match.player2 }} </button> 
+        </div>
+        <div *ngIf="message">
+          <div>
+              {{ match.player1 }} vs {{ match.player2 }}
+          </div>
+          <div>  
+            SCORE: {{ message.scoreboard }}
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
