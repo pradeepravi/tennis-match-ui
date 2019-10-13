@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ScorerService {
   uri = 'http://localhost:8080/api/v1';
-  // uri = 'http://localhost:8080/api/v1';
+
   constructor(private http: HttpClient) { }
   addScore(matchId, player) {
     const obj = {
