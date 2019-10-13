@@ -37,9 +37,9 @@
           </a>
         </div>
         <div *ngIf="match" class="form-group">
-            <button (click)="addScore(match.player1)" class="btn btn-primary"> {{ match.player1 }} </button> 
+            <button (click)="addScore(match.player1)" class="btn btn-primary"> Give score to - {{ match.player1 }} </button> 
              - 
-            <button (click)="addScore(match.player2)" class="btn btn-primary"> {{ match.player2 }} </button> 
+            <button (click)="addScore(match.player2)" class="btn btn-primary"> Give score to - {{ match.player2 }} </button> 
         </div>
         <div *ngIf="message">
           <div>
