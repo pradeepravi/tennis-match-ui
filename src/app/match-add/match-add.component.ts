@@ -31,17 +31,14 @@ export class MatchAddComponent implements OnInit {
   ngOnInit() { }
 
   addMatch(player1, player2) {
-    // console.log(player1, player2);
     this.errors=null;
 
     this.matchService.addMatch(player1, player2)
       .subscribe(
         res => {
-          // console.log('SUCCESS', res);
           this.match = res;
         }, 
         error => {
-          // console.log('ERROR', error);
           this.errors = error;
         }
       );
@@ -51,7 +48,6 @@ export class MatchAddComponent implements OnInit {
     this.errors = null;
     this.scorerService.addScore(this.match.id, player)
       .subscribe(res => {
-        // console.log(res);
         this.setScore = res;
         this.scorerService.getScoreBoard(this.match.id)
           .subscribe(res => {
@@ -62,6 +58,11 @@ export class MatchAddComponent implements OnInit {
             this.errors = error;
             console.log('ERROR', error);
           });
-      });
+      }, 
+      error => {
+        this.errors = error;
+        console.log('ERROR', error);
+      }
+      );
   }
 }
